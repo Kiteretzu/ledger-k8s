@@ -10,10 +10,7 @@ spec:
       containers:
         - name: keda-operator
           args:
-            - "--disable-webhooks"
-          env:
-            - name: DISABLE_WEBHOOKS
-              value: "true"
+            - "--enable-cert-rotation"
           resources:
             requests:
               cpu: "75m"
@@ -21,3 +18,10 @@ spec:
             limits:
               cpu: "250m"
               memory: "256Mi"
+          volumeMounts:
+            - name: keda-certs
+              mountPath: /certs
+              readOnly: false
+      volumes:
+        - name: keda-certs
+          emptyDir: {}
