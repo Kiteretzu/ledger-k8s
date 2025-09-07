@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: redis
 spec:
-  replicas: 1   # adjust if you want a highly available setup
+  replicas: 1 # adjust if you want a highly available setup
   template:
     spec:
       containers:
@@ -11,8 +11,8 @@ spec:
           image: redis:7.0.11
           resources:
             limits:
-              memory: "512Mi"
-              cpu: "500m"
-            requests:
               memory: "256Mi"
               cpu: "250m"
+            requests:
+              memory: "128Mi"
+              cpu: "100m"

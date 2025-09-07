@@ -5,5 +5,4 @@ resources:
   - bootstrap/namespaces.yaml
   - infrastructure/ingress-nginx/overlays/production
   - infrastructure/keda/overlays/production
-  - infrastructure/sealed-secrets/overlays/production
   - apps/overlays/production

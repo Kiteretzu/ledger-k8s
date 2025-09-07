@@ -1,7 +1,0 @@
-namespace: kube-system
-
-resources:
-  - ../../base
-
-patchesStrategicMerge:
-  - deployment-patch.yaml

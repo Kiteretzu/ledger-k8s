@@ -9,10 +9,15 @@ spec:
     spec:
       containers:
         - name: keda-operator
+          args:
+            - "--disable-webhooks"
+          env:
+            - name: DISABLE_WEBHOOKS
+              value: "true"
           resources:
             requests:
-              cpu: "200m"
-              memory: "256Mi"
+              cpu: "75m"
+              memory: "128Mi"
             limits:
-              cpu: "500m"
-              memory: "512Mi"
+              cpu: "250m"
+              memory: "256Mi"

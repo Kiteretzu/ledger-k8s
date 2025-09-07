@@ -33,11 +33,11 @@ spec:
               value: "redis://ledger-redis:6379" # Use service name for Redis
           resources:
             requests:
-              cpu: "50m"
-              memory: "128Mi"
+              cpu: "25m"
+              memory: "96Mi"
             limits:
-              cpu: "200m"
-              memory: "256Mi"
+              cpu: "150m"
+              memory: "192Mi"
           livenessProbe:
             httpGet:
               path: /healthz
