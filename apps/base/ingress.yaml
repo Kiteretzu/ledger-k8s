@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: microservices-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: myledger.local   # placeholder hostname for now
+      http:
+        paths:
+          - path: /api/v1/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ledger-backend-service
+                port:
+                  number: 80
+          - path: /.well-known/acme-challenge/
+            pathType: Prefix
+            backend:
+              service:
+                name: cm-acme-http-solver
+                port:
+                  number: 8089

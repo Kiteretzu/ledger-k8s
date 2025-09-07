@@ -3,6 +3,6 @@ kind: Kustomization
 
 resources:
   - bootstrap/namespaces.yaml
-  - infrastructure/ingress-nginx/overlays/production
-  - infrastructure/keda/overlays/production
+  - bootstrap/ingress-nginx.yaml
+  - bootstrap/keda-install.yaml
   - apps/overlays/production

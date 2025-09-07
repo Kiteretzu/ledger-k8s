@@ -15,3 +15,4 @@ resources:
   - cronjobs/trigger-worker2-cronjob.yaml
   - cronjobs/trigger-worker3-cronjob.yaml
   - scaledobjects/worker-scaledobjects.yaml
+  - ingress.yaml
