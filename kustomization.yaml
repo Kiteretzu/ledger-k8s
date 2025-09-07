@@ -5,4 +5,5 @@ resources:
   - bootstrap/namespaces.yaml
   - bootstrap/ingress-nginx.yaml
   - bootstrap/keda-install.yaml
+  - bootstrap/sealed-secrets.yaml
   - apps/overlays/production
