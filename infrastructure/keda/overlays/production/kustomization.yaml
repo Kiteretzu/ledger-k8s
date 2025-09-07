@@ -1,0 +1,7 @@
+namespace: keda
+
+resources:
+  - ../../base
+
+patchesStrategicMerge:
+  - deployment-patch.yaml

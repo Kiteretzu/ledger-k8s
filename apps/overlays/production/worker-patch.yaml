@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ledger-worker
+spec:
+  replicas: 2 # scale based on production load
+  template:
+    spec:
+      containers:
+        - name: ledger-worker
+          image: sm7rth/my-ledger-worker:v1.0.0
+          env:
+            - name: ENV
+              value: "production"

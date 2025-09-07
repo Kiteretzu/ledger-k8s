@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ledger-backend
+  labels:
+    app: ledger-backend
+    app.kubernetes.io/name: ledger-backend
+    app.kubernetes.io/part-of: my-ledger
+spec:
+  replicas: 1   # base default, override in overlays (prod/staging)
+  selector:
+    matchLabels:
+      app: ledger-backend
+  template:
+    metadata:
+      labels:
+        app: ledger-backend
+        app.kubernetes.io/name: ledger-backend
+        app.kubernetes.io/part-of: my-ledger
+    spec:
+      containers:
+        - name: ledger-backend
+          image: sm7rth/my-ledger-backend:554d70a77fd835a66430451e87e699b14c8df5ed
+          ports:
+            - containerPort: 2231
+          envFrom:
+            - secretRef:
+                name: ledger-backend-secret   # references decrypted secret
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: REDIS_URL
+              value: "redis://ledger-redis:6379" # Use service name for Redis
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 2231
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 2231
+            initialDelaySeconds: 5
+            periodSeconds: 10

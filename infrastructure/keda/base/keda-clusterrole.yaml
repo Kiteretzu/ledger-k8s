@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: keda-operator
+rules:
+- apiGroups: ["keda.sh"]
+  resources: ["scaledobjects", "triggerauthentications", "clustertriggerauthentications", "scaledjobs"]
+  verbs: ["*"]
+- apiGroups: [""]
+  resources: ["pods", "events", "secrets"]
+  verbs: ["*"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets"]
+  verbs: ["*"]

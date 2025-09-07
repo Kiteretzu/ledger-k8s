@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ledger-backend
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: ledger-backend
+          image: sm7rth/my-ledger-backend:v1.0.0
+          env:
+            - name: ENV
+              value: "production"

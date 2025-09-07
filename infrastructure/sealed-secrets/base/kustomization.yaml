@@ -1,0 +1,13 @@
+namespace: kube-system
+
+resources:
+  - namespace.yaml
+  - sealed-secrets-serviceaccount.yaml
+  - sealed-secrets-clusterrole.yaml
+  - sealed-secrets-clusterrolebinding.yaml
+  - sealed-secrets-deployment.yaml
+  - sealed-secrets-service.yaml
+
+images:
+  - name: quay.io/bitnami/sealed-secrets-controller
+    newTag: v0.27.1

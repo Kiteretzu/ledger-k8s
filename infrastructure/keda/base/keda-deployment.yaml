@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keda-operator
+  namespace: keda
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keda-operator
+  template:
+    metadata:
+      labels:
+        app: keda-operator
+    spec:
+      serviceAccountName: keda-operator
+      containers:
+        - name: keda-operator
+          image: ghcr.io/kedacore/keda:2.14.0
+          ports:
+            - containerPort: 8080

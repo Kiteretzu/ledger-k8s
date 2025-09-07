@@ -1,0 +1,42 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-staging
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/Kiteretzu/myledger-k8s"
+    targetRevision: main
+    path: apps/staging
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-production
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/Kiteretzu/myledger-k8s"
+    targetRevision: main
+    path: apps/production
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

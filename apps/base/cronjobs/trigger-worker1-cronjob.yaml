@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: trigger-worker1
+spec:
+  schedule: "0 0 * * *" # Midnight daily
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: curl-worker1
+              image: curlimages/curl:latest
+              command: ["curl"]
+              args: ["-X", "GET", "http://ledger-backend-service/worker1"]
+          restartPolicy: OnFailure
