@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: ledger-worker
 spec:
-  replicas: 2 # scale based on production load
+  replicas: 1 # scale based on production load
   template:
     spec:
       containers:
