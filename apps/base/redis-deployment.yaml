@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: redis
     app.kubernetes.io/part-of: my-ledger
 spec:
-  replicas: 1   # base default, override in overlays if needed
+  replicas: 1 # base default, override in overlays if needed
   selector:
     matchLabels:
       app: redis
@@ -23,14 +23,14 @@ spec:
           image: redis:7
           ports:
             - containerPort: 6379
-          args: ["--appendonly", "yes"]  # enable AOF persistence
+          args: ["--appendonly", "yes"] # enable AOF persistence
           resources:
             requests:
-              cpu: "100m"
-              memory: "128Mi"
+              cpu: "50m"
+              memory: "64Mi"
             limits:
-              cpu: "250m"
-              memory: "256Mi"
+              cpu: "150m"
+              memory: "128Mi"
           livenessProbe:
             tcpSocket:
               port: 6379

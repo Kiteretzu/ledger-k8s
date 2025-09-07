@@ -13,7 +13,7 @@ spec:
         spec:
           containers:
             - name: curl-worker2
-              image: curlimages/curl:latest
+              image: curlimages/curl:8.8.0
               command: ["curl"]
               args: ["-X", "GET", "http://ledger-backend-service/worker2"]
           restartPolicy: OnFailure

@@ -5,6 +5,9 @@ resources:
   - ingressclass.yaml
   - ingress-nginx-deployment.yaml
   - ingress-nginx-service.yaml
+  - serviceaccount.yaml
+  - clusterrole.yaml
+  - clusterrolebinding.yaml
 
 commonLabels:
   app.kubernetes.io/name: ingress-nginx

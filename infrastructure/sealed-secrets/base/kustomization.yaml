@@ -9,5 +9,5 @@ resources:
   - sealed-secrets-service.yaml
 
 images:
-  - name: quay.io/bitnami/sealed-secrets-controller
+  - name: ghcr.io/bitnami-labs/sealed-secrets-controller
     newTag: v0.27.1

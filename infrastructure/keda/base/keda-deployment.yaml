@@ -17,5 +17,10 @@ spec:
       containers:
         - name: keda-operator
           image: ghcr.io/kedacore/keda:2.14.0
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
           ports:
             - containerPort: 8080
